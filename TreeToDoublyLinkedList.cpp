@@ -1,3 +1,17 @@
+void inPlaceTreeToDLL(node *root,node **head){
+	static node *prev;
+	if(root==NULL)
+		return;
+	inPlaceTreeToDLL(root->left,head);
+	if(prev==NULL)
+		*head=root;
+	else{
+		prev->right=root;
+		root->left=prev;
+	}
+	prev=root;
+	inPlaceTreeToDLL(root->right,head);
+}
 void fixPrevPointer(node *root){
 static node *prev =NULL;
 	if(root!=null){
@@ -43,4 +57,3 @@ node *treeTodll(node *root){
   }
   return root;
 }
-
